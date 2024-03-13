@@ -158,5 +158,4 @@ To enable TLS communication, include the following features
 
 Include -DZ_USE_CLIENT_CERTS feature to use the client certificate for connecting the device to the HUB.   
 - -DCRT_PARSE_MODE=REFERENCE 
-The available Certificate parse mode are EMBED and REFERENCE. This can be used in the application program and is not required for building the library.# Zoho-
-# Zoho-
+The available Certificate parse mode are EMBED and REFERENCE. This can be used in the application program and is not required for building the library.

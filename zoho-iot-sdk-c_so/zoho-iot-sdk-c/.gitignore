@@ -1,0 +1,15 @@
+#IDE configurations
+.vscode
+.idea
+#build & tmp folders
+build
+remake.sh
+#downloaded project dependencies
+#lib/*
+.DS_Store
+zoho_sdk.log
+src/certs
+.gradle/
+#sample Project dependancies
+projects/rpi_DHT11/lib/*
+projects/modbusRequest/lib/*
