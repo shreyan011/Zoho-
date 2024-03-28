@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.10.2)
-
-SET(CA_CRT /usr/local/certs/ca.crt)
+	
+SET(CA_CRT /home/debian/zoho/Raptee_MQTT/Raptee_MQTT/ZohoIoTServerRootCA.pem)
 SET(CLIENT_CRT /usr/local/certs/client.crt)
 SET(CLIENT_KEY /usr/local/certs/client.key)
 
@@ -8,6 +8,10 @@ SET(CLIENT_KEY /usr/local/certs/client.key)
 # certificates needs to be copied along with application.
 OPTION(EMBED_CERT_MODE "Embed certificates along with application" OFF)
 
+#include_directories(${ZeroMQ_INCLUDE_DIRS} /usr/include)
+
+
+include_directories(/usr/include)
 INCLUDE(${PROJECT_SOURCE_DIR}/cmake/internalFuncs.cmake)
 
 IF(EMBED_CERT_MODE)
@@ -44,5 +48,14 @@ TARGET_COMPILE_DEFINITIONS(basic PUBLIC ${FEATURES})
 IF(Z_ENABLE_TLS)
     TARGET_COMPILE_DEFINITIONS(basic PUBLIC ${CERTS_PATH})
 ENDIF(Z_ENABLE_TLS)
+find_library(ZMQ_LIBRARY NAMES zmq)
+#set(ZMQ_ROOT "/usr/lib/aarch64-linux-gnu")
+#find_package(ZMQ REQUIRED) 
+#include_directories(${ZMQ_INCLUDE_DIRS}) 
+#target_link_libraries(your_target_name ${ZMQ_LIBRARIES})
 
-TARGET_LINK_LIBRARIES(basic zoho_iot_sdk)
+TARGET_LINK_LIBRARIES(basic zoho_iot_sdk ${MZQ_LIBRARY})
+#TARGET_LINK_LIBRARIES(basic )
+#target_link_options(basic PRIVATE "-lzmq")
+#target_link_libraries(basic ${ZMQ_LIBRARY})
+#target_link_libraries(basic ZMQ::ZMQ)
